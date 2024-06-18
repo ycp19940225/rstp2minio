@@ -16,7 +16,7 @@ import (
 func main() {
 
 	minio, _ := minio2.New(
-		minio2.WithEndpoint(""),
+		minio2.WithEndpoint(""), // eg: 120.27.225.90
 		minio2.WithKey(""),
 		minio2.WithSecret(""),
 		minio2.WithBucket("test"),
