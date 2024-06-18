@@ -5,15 +5,12 @@ import (
 	"testing"
 )
 
-// endpoint: '120.27.225.90:9000'
-// bucket: 'admin'
-// key: 'admin'
-// secret: 'zenwell123456'
+
 var (
 	m, _ = New(
-		WithEndpoint("120.27.225.90:9000"),
-		WithKey("admin"),
-		WithSecret("zenwell123456"),
+		WithEndpoint(""),
+		WithKey(""),
+		WithSecret(""),
 		WithBucket("test"),
 	)
 )
