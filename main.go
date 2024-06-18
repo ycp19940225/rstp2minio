@@ -9,9 +9,9 @@ import (
 func main() {
 
 	minio, _ := minio2.New(
-		minio2.WithEndpoint("120.27.225.90:9000"),
-		minio2.WithKey("admin"),
-		minio2.WithSecret("zenwell123456"),
+		minio2.WithEndpoint(""),
+		minio2.WithKey(""),
+		minio2.WithSecret(""),
 		minio2.WithBucket("test"),
 	)
 	steamClient := monitorstorage.NewMonitorStorage()
