@@ -87,6 +87,7 @@ func (c *RtspStorageUseCase) serveStreams(ctx context.Context, streamsData []*Ca
 }
 
 func (c *RtspStorageUseCase) HandleRTSPWorker(ctx context.Context, camera *Camera) {
+	fmt.Println("start save :", camera)
 	err := c.RTSPWorkerLoopV2(ctx, camera)
 	if err != nil {
 		fmt.Println("err:", err)
@@ -173,7 +174,7 @@ func (c *RtspStorageUseCase) RTSPWorkerLoopV2(ctx context.Context, camera *Camer
 				if err = muxer.WritePacket(*packetAV); err != nil {
 					return err
 				}
-				fmt.Println("av:", packetAV)
+				//fmt.Println("av:", packetAV)
 			}
 		}
 		fileName += "-" + nowTime.AddDuration(dur.String()).Format("H_i_s")
@@ -191,6 +192,7 @@ func (c *RtspStorageUseCase) RTSPWorkerLoopV2(ctx context.Context, camera *Camer
 			f.ObjectName = filePath
 			err = f.Close()
 			if err != nil {
+				fmt.Println("minio 保存失败，转为本地保存")
 				// 如果mimio报出错的情况下，保存到本地
 				err := f.LocalStorage()
 				if err != nil {
