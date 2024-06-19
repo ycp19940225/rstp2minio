@@ -1,5 +1,6 @@
 # rtsp2minio
 摄像头视频流分段保存到minio、本地为MP4格式文件
+支持大量摄像头 并发保存
 
 ## usage
 
@@ -70,7 +71,7 @@ func waitElegantExit(c chan os.Signal) {
 
 ```
 
-###rtsp测试地址获取
+### rtsp测试地址获取
 
 https://blog.csdn.net/fengbingchun/article/details/45479125/?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_baidulandingword~default-0--blog-126341960.235^v43^pc_blog_bottom_relevance_base8&spm=1001.2101.3001.4242.1&utm_relevant_index=3
 
