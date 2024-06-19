@@ -129,6 +129,7 @@ func (c *RtspStorageUseCase) RTSPWorkerLoopV2(ctx context.Context, camera *Camer
 		noVideo := time.NewTimer(noVideoTimeoutFormat)
 		dur, err := time.ParseDuration(c.config.Duration)
 		saveLimit := time.NewTimer(dur)
+		// 寻找关键帧
 		checkLimit := false
 		for loop {
 			select {
@@ -172,6 +173,7 @@ func (c *RtspStorageUseCase) RTSPWorkerLoopV2(ctx context.Context, camera *Camer
 				if err = muxer.WritePacket(*packetAV); err != nil {
 					return err
 				}
+				fmt.Println("av:", packetAV)
 			}
 		}
 		fileName += "-" + nowTime.AddDuration(dur.String()).Format("H_i_s")

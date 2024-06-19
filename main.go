@@ -1,12 +1,15 @@
 package main
 
 import (
+	"os"
 	minio2 "rstp2minio/minio"
 	"rstp2minio/steam"
 	monitorstorage "rstp2minio/steam/monitor_storage"
 )
 
 func main() {
+	// 设置 TZ 环境变量
+	os.Setenv("TZ", "Asia/Shanghai")
 
 	minio, _ := minio2.New(
 		minio2.WithEndpoint(""),
@@ -26,10 +29,13 @@ func main() {
 	// 摄像头信息
 	var streamsData []*steam.Camera
 	testStreamsData := &steam.Camera{
-		IP: "rtsp://wowzaec2demo.streamlock.net/vod/mp4:BigBuckBunny_115k.mov",
+		IP: "rtsp://localhost:8554/stream",
 		ID: 8950183874114224129,
 		No: "test1",
 	}
 	streamsData = append(streamsData, testStreamsData)
 	server.SaveMonitorStream(streamsData)
+	for true {
+
+	}
 }
